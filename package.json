@@ -1,0 +1,26 @@
+{
+  "name": "ecommerce-api",
+  "version": "1.0.0",
+  "description": "backend for ecommerce website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env APP_ENV=dev nodemon server.js",
+    "uat": "cross-env APP_ENV=uat nodemon server.js",
+    "prod": "cross-env APP_ENV=prod nodemon server.js"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.6.0",
+    "mysql2": "^3.24.4"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "nodemon": "^3.1.14"
+  }
+}
