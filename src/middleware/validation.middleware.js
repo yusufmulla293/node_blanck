@@ -1,4 +1,5 @@
 const validateRequiredFields = (model) => {
+  
   return (req, res, next) => {
     if (!req.body || Object.keys(req.body).length === 0) {
       const error = new Error("Request body is required");

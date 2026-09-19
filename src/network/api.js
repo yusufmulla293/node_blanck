@@ -4,7 +4,7 @@ const ipMiddleware = require("../middleware/ip.middleware");
 const authMiddleware = require("../middleware/auth.middleware");
 const encryptionMiddleware = require("../middleware/encryption.middleware");
 const rateLimitMiddleware = require("../middleware/rateLimit.middleware");
-const validationMiddleware = require("../middleware/validation.middleware");
+const validateRequiredFields = require("../middleware/validation.middleware");
 
 const router = express.Router();
 
@@ -13,10 +13,6 @@ const getMiddlewares = (options = {}) => {
 
     if (options.ip) {
         middlewares.push(ipMiddleware);
-    }
-
-    if (options.auth) {
-        middlewares.push(authMiddleware);
     }
 
     if (options.rateLimit) {
@@ -32,10 +28,14 @@ const getMiddlewares = (options = {}) => {
         );
     }
 
-    if (options.validation) {
+    if (options.FieldValidation) {
         middlewares.push(
-            validationMiddleware(options.validation)
+            validateRequiredFields(options.FieldValidation)
         );
+    }
+
+     if (options.auth) {
+        middlewares.push(authMiddleware);
     }
 
     return middlewares;

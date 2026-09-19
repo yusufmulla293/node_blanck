@@ -1,4 +1,5 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const fs = require("fs");
 const path = require("path");
 
@@ -7,6 +8,8 @@ const app = express();
 const apiSecurityMiddleware = require("../middleware/apiSecurity.middleware");
 const errorMiddleware = require("../middleware/error.middleware");
 
+app.use(express.json());
+app.use(cookieParser());
 app.use(apiSecurityMiddleware);
 
 const microservicesPath = path.join(__dirname, "../microservices");

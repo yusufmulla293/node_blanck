@@ -11,8 +11,15 @@ const loginModel = {
     required: true,
   },
 };
+const authenticateModel = {
+  identifier: {
+    type: "string",
+    required: true,
+  },
+};
 
 module.exports = {
   registerModel,
   loginModel,
+  authenticateModel,
 };

@@ -40,11 +40,16 @@ const loginController = async (req, res, next) => {
 
     const token = jwtServices(user);
 
+    res.cookie("accessToken", token, {
+      httpOnly: true,
+      secure: process.env.NODE_API_ENV === "prod",
+      sameSite: "lax",
+      maxAge: 15 * 60 * 1000,
+      path: "/",
+    });
     return res.status(200).json({
       success: true,
       message: "Login successful",
-      user: user.username,
-      token: token,
     });
   } catch (error) {
     next(error);
